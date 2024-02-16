@@ -1,7 +1,10 @@
-body {
+footer,header,nav{text-align:center}article,body{padding:20px}body{font-family:Arial,sans-serif;margin:0 auto;max-width:50em}footer,header{background-color:#333;color:#fff;padding:20px 0}nav{background-color:#f4f4f4;padding:10px}article{margin:20px;background-color:#f9f9f9}
+
+/* body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 50em;
 }
 header, footer {
     background-color: #333;
@@ -18,4 +21,4 @@ article {
     padding: 20px;
     margin: 20px;
     background-color: #f9f9f9;
-}
+} */
