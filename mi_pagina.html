@@ -5,46 +5,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Página Personal</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
-    <body>
-        <header>
-            <title>Mi Página Personal</title>
-            <h1>Mi Página Personal</h1>
-        </header>
-        
-        <nav>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+  
+        <a class="navbar-item">
+          Documentation
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</nav>
+
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <p class="title">Sobre mi...</p>
+            <p class="subtitle">Hola, mi nombre es Galo Alejandro del Rio Viggiano. Soy un apasionado por la tecnonogia coputacional y por la música. En mi tiempo libre me gusta hacer ejercicio en el gimnasio y ver documentales</p>
+          </article>
+          <article class="tile is-child notification is-warning">
+            <p class="title">Proyectos</p>
+            <p class="subtitle"><h3>Proyecto 1</h3>
+                <p>Gracias a mi experiencia académica, he tenido la oportunidad de trabajar en varios proyectos en los que he tenido que gestionar el tiempo y los recursos para alcanzar diferentes objetivos. Actualmente, trabajo como miembro de un grupo de estudiantes en la sección de comunicación, donde me propongo mejorar mis habilidades para transmitir información de forma clara y eficaz. .</p>
+                <h3>Proyecto 2</h3>
+                <p>Durante mi estancia en la universidad, he tenido la oportunidad de participar en diversos proyectos de análisis de datos, utilizando herramientas como R y Pandas en Python. Esta experiencia me ha permitido realizar importantes aportaciones a la gestión de proyectos incluyendo empresas familiares, en las que he podido realizar ajustes para mejorar su rendimiento..</p></p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-info">
+            <p class="title">Foto</p>
+            <p class="subtitle">Yo soy este</p>
+            <figure class="image is-4by4">
+              <img src="WhatsApp Image 2024-02-22 at 09.41.01.png">
+            </figure>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-danger">
+          <p class="title">Contacto</p>
+          <p class="subtitle"><p>Puedes contactarme a través de:</p>
+          <ul>
+              <li>Email: galoviggiano@gmail.com</li>
+              <li>Teléfono: 442-111-3104</li>
+          </ul></p>
+          <div class="content">
+            <!-- Content -->
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-success">
+        <div class="content">
+          <p class="title">LABS</p>
+          <p class="subtitle"><nav>
             
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
             <li><a href="lab1.html" >Lab 1</a></li>
             <li><a href="lab3.html" >Lab 3</a></li>
             <li><a href="lab4.html" >Lab 4</a></li>
             <li><a href="referencias.html" >Referencias</a></li>
         
-        </nav>
-        
-        <article id="sobre-mi">
-            <h2>Sobre Mí</h2>
-            <p>Hola, mi nombre es Galo Alejandro del Rio Viggiano. Soy un apasionado por la tecnonogia coputacional y por la música. En mi tiempo libre me gusta hacer ejercicio en el gimnasio y ver documentales.</p>
-        </article>
-        
-        <article id="proyectos">
-            <h2>Proyectos</h2>
-            <h3>Proyecto 1</h3>
-            <p>Gracias a mi experiencia académica, he tenido la oportunidad de trabajar en varios proyectos en los que he tenido que gestionar el tiempo y los recursos para alcanzar diferentes objetivos. Actualmente, trabajo como miembro de un grupo de estudiantes en la sección de comunicación, donde me propongo mejorar mis habilidades para transmitir información de forma clara y eficaz. .</p>
-            <h3>Proyecto 2</h3>
-            <p>Durante mi estancia en la universidad, he tenido la oportunidad de participar en diversos proyectos de análisis de datos, utilizando herramientas como R y Pandas en Python. Esta experiencia me ha permitido realizar importantes aportaciones a la gestión de proyectos incluyendo empresas familiares, en las que he podido realizar ajustes para mejorar su rendimiento..</p>
-        </article>
+        </nav></p>
+          <div class="content">
+            <!-- Content -->
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
         
         <article id="contacto">
-            <h2>Contacto</h2>
-            <p>Puedes contactarme a través de:</p>
-            <ul>
-                <li>Email: galoviggiano@gmail.com</li>
-                <li>Teléfono: 442-111-3104</li>
-            </ul>
+            <h2>Formulario:</h2>
+            
             <form action="#" method="post">
                 <label for="nombre">Nombre:</label><br>
                 <input type="text" id="nombre" name="nombre"><br>
