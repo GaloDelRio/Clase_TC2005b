@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeria</title>
+</head>
+<body>
+    <h1>Joyeria</h1>
+    <p>Supongamos que estás trabajando en el desarrollo de un sistema de gestión de inventario para una joyería en línea. Este sistema debe permitir a los administradores agregar nuevas joyas al inventario y mostrar todas las joyas disponibles en la tienda en línea.</p>
+    <p>En este escenario, el código proporcionado sería de gran utilidad. Los botones "Agregar Joya" y "Mostrar Joyas" permitirían a los administradores del sistema realizar dos tareas clave:</p>
+    <ol>
+        <li><strong>Agregar nuevas joyas al inventario:</strong> Cuando un nuevo producto llega a la tienda, un administrador puede hacer clic en el botón "Agregar Joya", ingresar el nombre y el material de la joya en los campos de entrada proporcionados, y luego hacer clic en "Aceptar" para agregar la joya al inventario. Esto actualizaría la lista de joyas disponibles en el sistema de gestión de inventario.</li>
+        <li><strong>Mostrar todas las joyas disponibles:</strong> Cuando un administrador necesita verificar qué joyas están actualmente disponibles en el inventario, puede hacer clic en el botón "Mostrar Joyas". Esto desencadenaría la función que recorre la lista de joyas en el inventario y muestra cada una de ellas en la interfaz de usuario, proporcionando una visión general rápida y actualizada del stock de la tienda.</li>
+    </ol>
+    
+    <div id="output"></div>
+    <button onclick="agregarJoya()">Agregar Joya</button>
+    <button onclick="mostrarJoyas()">Mostrar Joyas</button>
+
+    <script src="joya.js"></script>
+
+    <script>
+        // Aquí vamos a utilizar nuestra solución en JavaScript
+        const joya = new Joya();
+        // joya.agregarJoya("Anillo en rosca", "oro");
+        // joya.mostrarJoya();
+        // joya.buscarJoya("Anillo en rosca");
+
+        function agregarJoya() {
+            const nombre = prompt("Ingrese el nombre de la joya:");
+            const material = prompt("Ingrese el material de la joya:");
+            joya.agregarJoya(nombre, material);
+        }
+
+        function mostrarJoyas() {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = ""; // Limpiar el contenido anterior
+            const joyas = joya.mostrarJoya();
+            joyas.forEach(joya => {
+                const p = document.createElement("p");
+                p.textContent = `${joya.nombre} - ${joya.material}`;
+                outputDiv.appendChild(p);
+            });
+        }
+    </script>
+</body>
+</html>

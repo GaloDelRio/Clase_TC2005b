@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Lab 4/<h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="mi_pagina.html" >Pagina Personal</a></li>
+            <li><a href="joyeria.html" >Ejemplo uso de clase</html></a></li>
+        </ul>
+    </nav>
+
+    <style>
+        .button-container {
+            text-align: center; /* Para centrar los botones */
+            margin-top: 20px; /* Agrega espacio encima de los botones */
+            margin: 10px; /* Agrega espacio entre los botones */
+        }
+    </style>
+    
+    <div class="button-container">
+        <button onclick="createTable()">Crear Tabla</button>
+        <button onclick="sumaAleatoria()">Suma Aleatoria</button>
+        <button onclick="contador([1, -2, 0, 3, -4, 0, 5])">Contador</button>
+        <button onclick="promedios([[1, 2, 3], [4, 5, 6], [7, 8, 9]])">Sacar promedios</button>
+        <button onclick="inversos(123)">Sacar inversos</button>
+    </div>
+    <div id="resultadoContador"></div>
+    <div id="resultadoPromedios"></div>
+    <div id="resultadoInverso"></div>
+    
+
+    <script src="intreo_js.js">
+        function createTable() {
+            // Tu función createTable()
+        }
+    
+        function sumaAleatoria() {
+            // Tu función sumaAleatoria()
+        }
+    
+        function contador(numeros) {
+        var resultados = contador(numeros); // Llama a la función contador con el argumento proporcionado
+        alert("Negativos: " + negativos + "\nCeros: " + ceros + "\nPositivos: " + positivos);
+            // Tu función contador(numeros)
+        }
+    
+        function promedios(matriz) {
+            // Tu función promedios(matriz)
+        }
+    
+        function inverso(numero) {
+            // Tu función inversos(numero)
+        }
+    </script>
+
+<article id="lab1">
+    <h2>Diferencias y similitudes entre Java y JavaScript:</h2>
+    <h3>Diferencias:</h3>
+    <ul>
+        <li>Java es un lenguaje de programación orientado a objetos de propósito general, mientras que JavaScript es un lenguaje de secuencias de comandos principalmente utilizado para programación web.</li>
+        <li>Java requiere un entorno de ejecución (JVM) para ejecutar código, mientras que JavaScript se ejecuta en un navegador web o en el entorno Node.js.</li>
+        <li>Java utiliza tipado estático, lo que significa que los tipos de datos de las variables se declaran explícitamente, mientras que JavaScript es de tipado dinámico.</li>
+        <li>Java se compila en código de bytes antes de la ejecución, mientras que JavaScript se interpreta en tiempo de ejecución.</li>
+        <li>Java tiene fuertes restricciones de seguridad debido a su entorno de ejecución controlado, mientras que JavaScript ejecuta en un sandbox dentro del navegador, limitando su acceso al sistema operativo.</li>
+    </ul>
+    <h3>Similitudes:</h3>
+    <ul>
+        <li>Ambos lenguajes utilizan una sintaxis similar a C.</li>
+        <li>Tienen estructuras de control de flujo similares, como bucles y condicionales.</li>
+        <li>Comparten algunas características orientadas a objetos, como clases, métodos y herencia.</li>
+    </ul>
+    <h2>Métodos del objeto Date:</h2>
+    <ul>
+        <li>getDate(): Obtiene el día del mes (del 1 al 31).</li>
+        <li>getMonth(): Obtiene el mes (del 0 al 11).</li>
+        <li>getFullYear(): Obtiene el año.</li>
+        <li>getHours(): Obtiene la hora (0-23).</li>
+        <li>getTime(): Obtiene el tiempo en milisegundos desde el 1 de enero de 1970.</li>
+    </ul>
+    <h2>Métodos de los arreglos en JavaScript:</h2>
+    <ul>
+        <li>push(): Añade uno o más elementos al final del arreglo y devuelve la nueva longitud del arreglo.</li>
+        <li>pop(): Elimina el último elemento de un arreglo y devuelve ese elemento.</li>
+        <li>splice(): Cambia el contenido de un arreglo eliminando o reemplazando elementos existentes y/o agregando nuevos elementos.</li>
+        <li>slice(): Devuelve una copia superficial de una porción del arreglo en un nuevo arreglo.</li>
+        <li>indexOf(): Devuelve el primer índice en el que se encuentra un elemento dado en el arreglo, o -1 si no está presente.</li>
+    </ul>
+    <h2>Declaración de una variable con alcance local dentro de una función:</h2>
+    <p>En JavaScript, puedes declarar una variable con alcance local dentro de una función utilizando la palabra clave var, let, o const, dependiendo del comportamiento que desees:</p>
+    <pre><code>function miFuncion() {
+    var variableLocal = 10; // Declaración con var
+    let otraVariable = 'Hola'; // Declaración con let
+    const PI = 3.1416; // Declaración con const
+}</code></pre>
+    <h2>Implicaciones de utilizar variables globales dentro de funciones:</h2>
+    <p>El uso de variables globales dentro de funciones puede tener varias implicaciones negativas:</p>
+    <ul>
+        <li>Contaminación del espacio global: Puede conducir a la colisión de nombres de variables y funciones, lo que resulta en comportamientos inesperados y difíciles de depurar.</li>
+        <li>Dificultad para rastrear y entender el código: Las variables globales pueden ser modificadas desde cualquier parte del código, lo que hace que sea más difícil rastrear quién las modificó y en qué contexto.</li>
+        <li>Mayor riesgo de errores: Las variables globales pueden ser modificadas por cualquier función en el código, lo que aumenta el riesgo de errores y hace que el código sea menos modular y más difícil de mantener.</li>
+        <li>Problemas de seguridad: Las variables globales pueden ser accedidas y modificadas desde cualquier parte del código, lo que puede plantear problemas de seguridad si contienen datos sensibles o críticos para la aplicación.</li>
+    </ul>
+    <p>Por lo tanto, es una buena práctica minimizar el uso de variables globales y en su lugar, limitar su alcance dentro de funciones o módulos específicos según sea necesario.</p>
+</article>
+
+
+</body>
