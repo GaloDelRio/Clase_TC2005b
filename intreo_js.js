@@ -96,10 +96,14 @@ function promedios(matriz) {
     alert("Promedios: " + promediosArray.join(", "));
 }
 
-function inverso(numero) {
+function inversos(numero) {
     var numeroInverso = "";
-    while (numero !== 0) {
-        numeroInverso = (numero % 10) + numeroInverso;
+    while (numero > 0) {
+        // Obtener el último dígito del número original
+        let digito = numero % 10;
+        // Añadir el dígito obtenido al número invertido multiplicándolo por 10 para posicionarlo correctamente
+        numeroInverso = numeroInverso * 10 + digito;
+        // Eliminar el último dígito del número original
         numero = Math.floor(numero / 10);
     }
     alert("El inverso del número es: " + numeroInverso);
