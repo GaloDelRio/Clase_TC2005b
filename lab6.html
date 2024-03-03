@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Validator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    #passwordStrength {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .weak {
+        color: red;
+    }
+    .medium {
+        color: orange;
+    }
+    .strong {
+        color: green;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Password Validator</h2>
+    <form id="passwordForm">
+        <input type="password" id="password" placeholder="Enter password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+        <div id="passwordStrength"></div>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="additionalInfo">
+        <p>Es una buena práctica utilizar JavaScript para validar los inputs de las formas antes de enviar los datos al servidor por varias razones:</p>
+        <p><strong>Experiencia del usuario:</strong> Validar los inputs del formulario en el lado del cliente (con JavaScript) permite dar retroalimentación instantánea al usuario sobre cualquier error en los datos ingresados, sin tener que esperar la respuesta del servidor. Esto mejora la experiencia del usuario al proporcionar una interacción más rápida y fluida.</p>
+        <p><strong>Reducción de la carga del servidor:</strong> Validar los datos en el lado del cliente antes de enviarlos al servidor ayuda a reducir la carga en el servidor, ya que evita que se envíen datos inválidos que luego necesitarían ser procesados y validados en el servidor. Esto puede ayudar a mejorar el rendimiento y la eficiencia del servidor.</p>
+        <p><strong>Conservación de recursos:</strong> Al validar los datos en el lado del cliente, se pueden evitar solicitudes innecesarias al servidor, lo que ayuda a conservar los recursos de red y reduce el consumo de ancho de banda.</p>
+        <p><strong>Importante:</strong> La validación en el lado del cliente (usando JavaScript) no es suficiente por sí sola para garantizar la seguridad de los datos. Esto se debe a que el código JavaScript puede ser modificado por el usuario, o incluso desactivado por completo, lo que permite que se envíen datos maliciosos o inválidos al servidor.</p>
+        <p>Para saltarse la seguridad de las validaciones hechas con JavaScript, un usuario malintencionado podría:</p>
+        <ul>
+            <li>Desactivar JavaScript: Simplemente deshabilitando JavaScript en su navegador, un usuario podría evitar por completo cualquier validación realizada en el lado del cliente.</li>
+            <li>Modificar el código JavaScript: Si el código JavaScript que realiza la validación se encuentra en el lado del cliente, un usuario podría modificarlo fácilmente utilizando herramientas de desarrollo del navegador para eludir las validaciones.</li>
+            <li>Enviar solicitudes directamente al servidor: Un usuario podría enviar solicitudes directamente al servidor utilizando herramientas como cURL o Postman, evitando así cualquier validación realizada en el lado del cliente.</li>
+        </ul>
+        <p>Por lo tanto, aunque la validación en el lado del cliente con JavaScript puede mejorar la experiencia del usuario y reducir la carga del servidor, no debe considerarse como la única capa de seguridad. Es importante complementarla con validaciones adecuadas en el lado del servidor para garantizar la integridad y seguridad de los datos.</p>
+    </div>
+</div>
+
+<script>
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const passwordStrengthIndicator = document.getElementById('passwordStrength');
+
+    // Funciones de validación de contraseña (sin cambios)
+    function validatePasswordStrength(password) {
+        const strength = {
+            weak: /^(?=.*[a-z])|(?=.*[A-Z])|(?=.*\d)|(?=.*[\W])/.test(password),
+            medium: /^(?=.*[a-z])(?=.*[A-Z])|(?=.*\d)(?=.*[A-Z])|(?=.*\d)(?=.*[a-z])|(?=.*[\W])(?=.*[a-z])|(?=.*[\W])(?=.*[A-Z])|(?=.*[\W])(?=.*\d)/.test(password),
+            strong: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])/.test(password)
+        };
+
+        if (strength.strong) return 'strong';
+        if (strength.medium) return 'medium';
+        if (strength.weak) return 'weak';
+        return 'none';
+    }
+
+    function updatePasswordStrength() {
+        const password = passwordInput.value;
+        const strength = validatePasswordStrength(password);
+        const strengthText = {
+            weak: 'Weak',
+            medium: 'Medium',
+            strong: 'Strong',
+            none: ''
+        };
+        passwordStrengthIndicator.textContent = strengthText[strength];
+        passwordStrengthIndicator.className = strength === 'none' ? '' : strength;
+    }
+
+    function confirmPassword() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        if (password !== confirmPassword) {
+            confirmPasswordInput.setCustomValidity("Passwords don't match");
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+        }
+    }
+
+    passwordInput.addEventListener('input', updatePasswordStrength);
+    confirmPasswordInput.addEventListener('input', confirmPassword);
+
+    const passwordForm = document.getElementById('passwordForm');
+    passwordForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Aquí puedes añadir lógica adicional, como enviar el formulario a un servidor
+        alert('Password validated successfully!');
+    });
+</script>
+</body>
+</html>

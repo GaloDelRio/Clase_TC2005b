@@ -4,6 +4,7 @@
   "description": "Proyecto_Clase",
   "main": "intreo_js.js",
   "scripts": {
+    "start": "nodemon intreo_js.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
