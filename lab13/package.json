@@ -1,0 +1,31 @@
+{
+  "name": "clase_tc2005b",
+  "version": "1.0.0",
+  "description": "Proyecto_Clase",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaloDelRio/Clase_TC2005b.git"
+  },
+  "keywords": [
+    "holahola"
+  ],
+  "author": "GalodelRio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GaloDelRio/Clase_TC2005b/issues"
+  },
+  "homepage": "https://github.com/GaloDelRio/Clase_TC2005b#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  }
+}
