@@ -15,12 +15,17 @@ app.use(session({
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+
+const csrf = require('csurf');
+const csrfProtection = csrf();
+app.use(csrfProtection); 
+
 
 const rutasUsuarios = require('./routes/users.routes');
 app.use('/users', rutasUsuarios);

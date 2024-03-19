@@ -3,6 +3,7 @@ const Joya = require('../models/joyeria.model');
 exports.get_crear = (request, response, next) => {
     response.render('Agregar', {
         username: request.session.username || '',
+        csrfToken: request.csrfToken(),
     });
 };
 
@@ -19,7 +20,7 @@ exports.post_crear = (request, response , next) => {
 
     mi_Joya.save()
         .then(([rows, fieldData]) => {
-            response.setHeader('Set-Cookie', 'ultima_joya=' + mi_joya.clase + '; HttpOnly');
+            response.setHeader('Set-Cookie', 'ultima_joya=' + mi_Joya.clase + '; HttpOnly');
             response.redirect('/');
         }).catch((error) => {
             console.log(error);
@@ -30,8 +31,8 @@ exports.get_root = (request, response, next) => {
     console.log(request.cookies);
     console.log(request.cookies.ultima_joya);
         Joya.fetchAll(request.params.joya_id).then(([rows, fieldData]) => {
-            //console.log(fieldData);
-            response.render('clases', {
+            response.render('Clases', {
+                csrfToken: request.csrfToken(),
                 joyeria: rows,
                 ultima_joya: request.cookies.ultima_joya || '',
                 username: request.session.username || '',

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Librería</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-sans">
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Brand/logo -->
+            <a href="#" class="text-white font-bold text-2xl">Lab 10</a>
+
+            <!-- Navbar links -->
+            <div class="space-x-4">
+                <% if (username == '') { %>
+                <a href="#" class="text-white hover:bg-blue-700 hover:shadow-md py-4 px-3 rounded-sm">Home</a>
+                <a href="/joyeria" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Joyas</a>
+                <a href="/Add" class="text-white hover:bg-blue-700 hover:shadow-md py-4 px-3 rounded-sm">Add</a>
+                <a href="#" class="text-white hover:bg-blue-700 hover:shadow-md py-4 px-3 rounded-sm">Services</a>
+                <a href="#" class="text-white hover:bg-blue-700 hover:shadow-md py-4 px-3 rounded-sm">Contact</a>
+                <a class="button is-primary">
+                    <strong>Sign up</strong>
+                </a>
+                <a href="/users/login" class="button is-light">
+                    Entrar
+                </a>
+                <% } else { %>
+                <strong>Hola <%= username %> |  </strong>
+                <a href="/users/logout" class="button is-danger">
+                    Salir
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>
