@@ -3,7 +3,6 @@ const Joya = require('../models/joyeria.model');
 exports.get_crear = (request, response, next) => {
     response.render('Agregar', {
         username: request.session.username || '',
-        csrfToken: request.csrfToken(),
     });
 };
 
@@ -31,8 +30,8 @@ exports.get_root = (request, response, next) => {
     console.log(request.cookies);
     console.log(request.cookies.ultima_joya);
         Joya.fetchAll(request.params.joya_id).then(([rows, fieldData]) => {
-            response.render('Clases', {
-                csrfToken: request.csrfToken(),
+            //console.log(fieldData);
+            response.render('clases', {
                 joyeria: rows,
                 ultima_joya: request.cookies.ultima_joya || '',
                 username: request.session.username || '',

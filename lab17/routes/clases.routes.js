@@ -1,17 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const isAuth = require('../util/is-auth');
-
 router.use(express.urlencoded({ extended: true }));
 
 
 
 const joyaController = require('../controllers/joyeria.controller.js');
 
-router.get('/add', isAuth, joyaController.get_crear);
-router.post('/add', isAuth, joyaController.post_crear);
-router.get('/:joya_id', isAuth, joyaController.get_root);
-router.get('/', isAuth, joyaController.get_root);
+router.get('/add', joyaController.get_crear);
+router.post('/add', joyaController.post_crear);
+router.get('/:joya_id', joyaController.get_root);
+router.get('/', joyaController.get_root);
 
 module.exports = router;
 

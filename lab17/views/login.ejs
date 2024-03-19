@@ -1,26 +1,16 @@
 <%- include('includes/head.ejs', {username: username}) %>
-
-<h2 class="title"><% if (registro) { %>¡Únete al clan!<% } else { %>Bienvenido<% } %></h2>
-<% if(error) { %>
-    <div class="notification bg-red-500 text-white p-4 mb-4">
-        <strong><%= error %></strong>
-    </div>
-<% } %>
-<form action="/users/<% if (registro) { %>signup<% } else { %>login<% } %>" method="POST">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+<form action="/users/login" method="POST" class="max-w-md mx-auto mt-8 space-y-4">
     <div>
         <label class="block text-gray-700" for="username">Nombre de usuario</label>
         <input class="w-full px-3 py-2 mt-1 text-gray-700 border rounded-md focus:outline-none focus:ring focus:border-blue-300" id="username" name="username" type="text">
-        <% if (registro) { %>
-            <label class="block text-gray-700" for="name">Nombre completo</label>
-            <input class="w-full px-3 py-2 mt-1 text-gray-700 border rounded-md focus:outline-none focus:ring focus:border-blue-300" id="name" name="name" type="text">
-        <% } %>
     </div>
     <div>
         <label class="block text-gray-700" for="password">Contraseña</label>
         <input class="w-full px-3 py-2 mt-1 text-gray-700 border rounded-md focus:outline-none focus:ring focus:border-blue-300" id="password" name="password" type="password">
     </div>
     <div>
-        <button class="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600" type="submit"><% if (registro) { %>¡Unirme!<% } else { %>Entrar<% } %></button>
+        <button class="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-500" type="submit">Entrar</button>
     </div>
 </form>
+
+
