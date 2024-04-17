@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Librería</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="font-sans bg-gray-100">
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Brand/logo -->
+            <a href="#" class="text-white font-bold text-2xl">Lab 10</a>
+
+            <!-- Navbar links -->
+            <div class="space-x-4">
+                <% if (username == '') { %>
+                <a href="#" class="text-white hover:bg-blue-700 hover:shadow-md py-2 px-3 rounded">Home</a>
+                <a href="/joyeria" class="text-white hover:bg-blue-700 hover:shadow-md py-2 px-3 rounded">Joyas</a>
+                <a href="/Add" class="text-white hover:bg-blue-700 hover:shadow-md py-2 px-3 rounded">Add</a>
+                <a href="#" class="text-white hover:bg-blue-700 hover:shadow-md py-2 px-3 rounded">Services</a>
+                <a href="#" class="text-white hover:bg-blue-700 hover:shadow-md py-2 px-3 rounded">Contact</a>
+                <a href="/users/signup" class="bg-white text-blue-500 hover:bg-blue-700 hover:text-white py-2 px-4 rounded">Regístrate</a>
+                <a href="/users/login" class="text-white hover:bg-blue-700 hover:shadow-md py-2 px-3 rounded">Entrar</a>
+                <% } else { %>
+                <strong class="text-white">Hola <%= username %> | </strong>
+                <a href="/users/logout" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Salir</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>
+
