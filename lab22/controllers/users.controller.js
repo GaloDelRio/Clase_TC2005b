@@ -9,7 +9,7 @@ exports.get_login = (request, response, next) => {
         registro: false,
         csrfToken: request.csrfToken(),
         error : error ,
-        
+        permisos: request.session.permisos || [],
     });
 };
 
@@ -18,14 +18,26 @@ exports.post_login = (request, response, next) => {
         .then(([usuarios, fieldData]) => {
             if (usuarios.length == 1) {
                 const usuario = usuarios[0];
+                console.log("Estamos dentro 2: ",usuario);
+                console.log("¿Coincide? ",bcrypt.compare(request.body.password, usuario.password))
                 bcrypt.compare(request.body.password, usuario.password)
                     .then((doMatch) => {
                         if(doMatch) {
-                            request.session.username = usuario.nombre;
-                            request.session.isLoggedIn = true;
-                            response.redirect('/');
+                            console.log("Si coincide :D")
+                            Usuario.getPermisos(usuario.username)
+                                .then(([permisos, fieldData]) => {
+                                    console.log(permisos);
+                                    request.session.permisos = permisos;
+                                    request.session.username = usuario.nombre;
+                                    request.session.isLoggedIn = true;
+                                    request.csrfToken(),
+                                    response.redirect('/');
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
                         } else {
-
+                            request.session.error = "Usuario y/o contraseña incorrectos";
                             response.redirect('/users/login');
                         }
                     })
@@ -53,20 +65,24 @@ exports.get_signup = (request, response, next) => {
         registro: true,
         csrfToken: request.csrfToken(),
         error: error ,
-        
+        permisos: request.session.permisos || [],
     });
 };
 
 exports.post_signup = (request, response, next) => {
+    console.log(request.body.username);
+    console.log(request.body.password);
+    console.log(request.body.nombre);
+
     const nuevo_usuario = new Usuario(
-        request.body.username, request.body.name, request.body.password
+        request.body.username, request.body.nombre, request.body.password
     );
+    console.log(nuevo_usuario);
     nuevo_usuario.save()
         .then(([rows,fieldData]) => {
             response.redirect('/users/login');
         })
         .catch((error) => {
-            console.log(error);
             request.session.error = 'Nombre de usuario no disponible';
             response.redirect('/users/signup');
         });

@@ -4,6 +4,8 @@ exports.get_crear = (request, response, next) => {
     response.render('Agregar', {
         username: request.session.username || '',
         csrfToken: request.csrfToken(),
+        permisos: request.session.permisos || [],
+        editar: false,
     });
 };
 
@@ -36,12 +38,37 @@ exports.get_root = (request, response, next) => {
                 joyeria: rows,
                 ultima_joya: request.cookies.ultima_joya || '',
                 username: request.session.username || '',
+                permisos: request.session.permisos || [],
             });
         })
         .catch((error) => {
             console.log(error)
         
 });
+};
+
+exports.get_editar = (request, response, next) => {
+    Tropa.fetchOne(request.params.id)
+        .then(([joyas, fieldData]) => {
+            response.render('add', {
+                username: request.session.username || '',
+                csrfToken: request.csrfToken(),
+                permisos: request.session.permisos || [],
+                editar: true,
+                joya: joyas[0],
+            });
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+};
+exports.post_editar = (request, response, next) => {
+    Joya.update(request.body.id, request.body.nombre, request.body.precio, 
+        request.body.tipo, request.body.imagen, request.body.descripcion)
+        .then(([rows, fieldData]) => {
+            response.redirect('/joyeria');
+        })
+        .catch((error) => {console.log(error)});
 };
  
     // router.get(`/`, (request, response , next) => {
@@ -50,4 +77,4 @@ exports.get_root = (request, response, next) => {
     //         username: request.session.username || '',
     //     })  
 
-    // });
+    // });                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

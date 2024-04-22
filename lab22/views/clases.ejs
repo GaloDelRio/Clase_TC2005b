@@ -1,7 +1,11 @@
-<%- include('includes/head.ejs', {username: username}) %>
-
+<%- include('includes/head.ejs', {
+    username: username,
+    permisos: permisos,
+}) %>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>Lab 10</title>
+    <title>JOYERIA</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -19,10 +23,16 @@
                     <div class="text-center">
                         <p class="text-lg"><a href="/joya/<%= item.id %>" class="text-blue-500 hover:text-blue-700"><%= item.nombre %></a></p>
                         <img src="<%= item.imagen %>" alt="<%= item.nombre %>" class="mt-4 mx-auto w-48 h-48 object-cover rounded-full">
-                        <!-- Agregar la descripción -->
                         <p class="text-gray-700 mt-4"><%= item.descripcion %></p>
                         <p class="text-gray-700 mt-2"><%= item.precio %></p>
                         <button class="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full">Comprar</button>
+                        
+                        <!-- Verificación de permisos para editar joyas -->
+                        <!-- <% for (let permiso of permisos) { %>
+                            <% if(permiso.permiso == 'editar_joya') { %>
+                                <a href="/joyas/editar/<%= item.id %>" class="mt-2 text-blue-500 hover:text-blue-700">Editar</a>
+                            <% } %>
+                        <% } %> -->
                     </div>
                 </li>
             <% }); %>
@@ -30,10 +40,9 @@
         </ul>
     <% }); %>
     <!-- Fin del bucle de filas -->
+
+    <% if(ultima_joya != '') { %> 
+        <div>La joya creada fue <%= ultima_joya %>.</div>
+    <% } %>
 </body>
-
-</div>
-<% if(ultima_joya != '') { %> 
-    <div>La joya creada fue <%= ultima_joya %>.</div>
-<% } %>
-
+</html>

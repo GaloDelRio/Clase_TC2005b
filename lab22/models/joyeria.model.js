@@ -35,4 +35,11 @@ static fetchOne(id) {
     return db.execute('Select * from joya WHERE id = ?', [id]);
 }
 
+static update(nombre, material, precio, tipo, imagen, descripcion) {
+    return db.execute(`UPDATE joya SET 
+        nombre = ?, material = ?, precio = ?, imagen = ?, descripcion = ?
+        WHERE id = ?`, 
+        [nombre, material, precio, tipo, imagen, descripcion]);
+}
+
 }

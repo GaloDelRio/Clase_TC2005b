@@ -1,9 +1,13 @@
-<%- include('includes/head.ejs', {username: username}) %>
+<%- include('includes/head.ejs', {
+    username: username,
+    permisos: permisos,
+}) %>
           <script src="https://cdn.tailwindcss.com"></script>
+          
           <head>
             <title>Lab 10</title>
             <body class="bg-gray-100 flex justify-center items-center h-screen">
-                <form action="/Add" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
+                <form action="/Add" method="POST"  enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre</label>
@@ -27,7 +31,7 @@
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="imagen">Imagen</label>
-                        <input type="text" id="imagen" name="imagen" value="https://joyeriarealdecatorce.com/wp-content/uploads/2020/04/GRBRAM_001.1-600x450.png" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="file" class="input text" id="imagen" name="imagen" value="<% if(editar) { %><%= joya.imagen %><% } %>">
                     </div>
                     <div class="flex items-center justify-between">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>

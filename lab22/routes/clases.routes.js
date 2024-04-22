@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const isAuth = require('../util/is-auth');
+const canView = require('../util/canView');
+const canCreate = require('../util/canCreate');
+const canEdit = require('../util/canEdit');
 
 router.use(express.urlencoded({ extended: true }));
 
@@ -8,10 +11,11 @@ router.use(express.urlencoded({ extended: true }));
 
 const joyaController = require('../controllers/joyeria.controller.js');
 
-router.get('/add', isAuth, joyaController.get_crear);
-router.post('/add', isAuth, joyaController.post_crear);
-router.get('/:joya_id', isAuth, joyaController.get_root);
-router.get('/', isAuth, joyaController.get_root);
+router.get('/add', isAuth, canCreate, joyaController.get_crear);
+router.post('/add', isAuth, canCreate, joyaController.post_crear);
+// router.get('/:joya_id', isAuth, canView, joyaController.get_root);
+router.get('/joyeria', isAuth, canView, joyaController.get_root);
+router.get('/', isAuth, canView, joyaController.get_root);
 
 module.exports = router;
 
