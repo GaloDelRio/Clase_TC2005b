@@ -45,4 +45,38 @@
         <div>La joya creada fue <%= ultima_joya %>.</div>
     <% } %>
 </body>
+
+<div id="spotifyPlaylist">
+    <script>
+        
+        const playlistId = '0v4vTwebMBgz0ih46nysbr';
+       
+        const token = 'a998e1504f3a4160b863866e6559254b';
+
+        fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+          headers: {
+            'Authorization': 'Bearer ${token}',
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          const playlist = data;
+          const playlistEmbedUrl = `https://open.spotify.com/embed/playlist/${playlistId}`
+          // Crea el cuadro donde estará la playlist
+          const iframe = document.createElement('iframe');
+          iframe.src = playlistEmbedUrl;
+          iframe.title = 'Spotify Embed: Recommendation Playlist';
+          iframe.width = '100%';
+          iframe.height = '100%';
+          iframe.style.minHeight = '360px';
+          iframe.frameBorder = '0';
+          iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+          iframe.loading = 'lazy';
+    
+          document.getElementById('spotifyPlaylist').appendChild(iframe);
+        })
+        .catch(error => console.error('Error:', error));
+
+    </script>
+</div>
 </html>
