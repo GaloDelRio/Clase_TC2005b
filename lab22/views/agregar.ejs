@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs', {
+    username: username,
+    permisos: permisos,
+}) %>
+          <script src="https://cdn.tailwindcss.com"></script>
+          
+          <head>
+            <title>Lab 10</title>
+            <body class="bg-gray-100 flex justify-center items-center h-screen">
+                <form action="/Add" method="POST"  enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" value="Pulsera de Zafiros" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="material">Material</label>
+                        <input type="text" id="material" name="material" value="Oro amarillo" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="precio">Precio</label>
+                        <input type="text" id="precio" name="precio" value="$2500" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold m b-2" for="tipo">Tipo</label>
+                        <input type="text" id="tipo" name="tipo" value="Pulsera" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" rows="4" cols="50" class="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">Luce elegante y sofisticada con esta pulsera de zafiros, montada en oro amarillo para un toque de lujo adicional.</textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="imagen">Imagen</label>
+                        <input type="file" class="input text" id="imagen" name="imagen" value="<% if(editar) { %><%= joya.imagen %><% } %>">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+                    </div>
+                </form>
+            </body>
+        </html>`; 
+
+
