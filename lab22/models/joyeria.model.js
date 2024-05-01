@@ -31,6 +31,16 @@ static fetch(id) {
         return this.fetchAll();
     }
 }
+
+static async obtenerCantidadJoyas() {
+    const [rows] = await db.execute('SELECT COUNT(*) AS cantidad FROM joya');
+    return rows[0].cantidad;
+}
+
+static async obtenerCantidadTipoJoya() {
+    return db.execute('SELECT tipo, COUNT(*) AS TotalTipo FROM joya GROUP BY tipo;')
+}
+
 static fetchOne(id) {
     return db.execute('Select * from joya WHERE id = ?', [id]);
 }

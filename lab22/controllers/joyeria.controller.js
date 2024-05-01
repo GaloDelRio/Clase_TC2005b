@@ -29,13 +29,17 @@ exports.post_crear = (request, response , next) => {
         });
 };
 
-exports.get_root = (request, response, next) => {
+exports.get_root = async (request, response, next) => {
     console.log(request.cookies);
     console.log(request.cookies.ultima_joya);
+    const cantidadJoyas = await Joya.obtenerCantidadJoyas();
+    const cantidadTipoJoya = await Joya.obtenerCantidadTipoJoya();
         Joya.fetchAll(request.params.joya_id).then(([rows, fieldData]) => {
             response.render('Clases', {
                 csrfToken: request.csrfToken(),
                 joyeria: rows,
+                cantidadJoyas: cantidadJoyas,
+                cantidadTipoJoya: cantidadTipoJoya,
                 ultima_joya: request.cookies.ultima_joya || '',
                 username: request.session.username || '',
                 permisos: request.session.permisos || [],
@@ -70,6 +74,20 @@ exports.post_editar = (request, response, next) => {
         })
         .catch((error) => {console.log(error)});
 };
+
+// exports.get_analiticaPRESET = async (request, response, next) => {
+//     const cantidadJoyas = await Joya.obtenerCantidadJoyas();
+//     const cantidadTipoJoya = await Joya.obtenerCantidadTipoJoya();
+//     console.log(cantidadTipoJoya);
+//     console.log(cantidadJoyas);
+//     console.log("hola")
+//     response.render('/', {
+//         cantidadJoyas: cantidadJoyas,
+//         cantidadTipoJoya: cantidadTipoJoya,
+//         username: request.session.username || '',
+//         permisos: request.session.permisos || [],
+//     });
+// }
  
     // router.get(`/`, (request, response , next) => {
     //     response.render('clases', {
